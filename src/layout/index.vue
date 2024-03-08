@@ -34,11 +34,15 @@ import tabbar from './tabbar/index.vue'
 import useLayOutSettingStore from '@/store/modules/setting'
 //获取仓库route配置
 import useUserStore from '@/store/modules/user';
+import { onMounted } from 'vue'
 let LayOutSettingStore = useLayOutSettingStore()
 
 const $route = useRoute()
 
 let useStore = useUserStore();
+onMounted(async()=>{
+  await useStore.userInfo()
+})
 </script>
 <script lang="ts">
 export default {

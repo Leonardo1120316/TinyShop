@@ -6,15 +6,21 @@ import useUserStore from "@/store/modules/user";
 const request = axios.create({
     //配置基础路径
     baseURL: import.meta.env.VITE_BASE_API,
-    timeout: 5000
+    timeout: 5000,
+    headers: {
+        'Content-Type': 'application/json; charset=utf-8'
+      }
 });
+
+//意思是携带cookie信息,保持session的一致性
+request.defaults.withCredentials =true
 //request实例添加请求响应拦截器
 request.interceptors.request.use((config) => {
-    //config含有header
-    let UserStore = useUserStore();
-    if(UserStore.token){
-       config.headers.token = UserStore.token  
-    }
+    // config含有header
+    // let UserStore = useUserStore();
+    // if(UserStore.session){
+    //    config.headers.session = UserStore.session
+    // }
     return config;
 })
 

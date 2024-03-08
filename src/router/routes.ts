@@ -17,21 +17,30 @@ export const routes = [
         component: () => import('@/layout/index.vue'),
         name: 'layout',
         meta: {
-            title: '',
+            title: '首页',
             hidden: false,
-            icon: ''
+            icon: 'House'
         },
         redirect: 'home',
         children: [
             {
                 path: '/home',
-                component: () => import('@/views/home/index.vue'),
+                component: () => import('@/views/home/club/index.vue'),
                 meta: {
-                    title: '首页',
-                    hidden: true,
-                    icon: "House"
+                    title: '社团信息',
+                    hidden: false,
+                    icon: "User"
+                }
+            },
+            {
+                path: '/activity',
+                component: () => import('@/views/home/activity/index.vue'),
+                meta: {
+                    title: '活动信息',
+                    hidden: false,
+                    icon: "Connection"
                 },
-            }
+            },
         ]
     },
     {

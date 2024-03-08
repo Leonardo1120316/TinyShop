@@ -7,20 +7,13 @@
                         <span>社团管理</span>
                     </div>
                     <div class="card-header-right">
-                        <el-button type="primary" @click="btnClick">新增</el-button>
+                        <el-button type="primary" @click="btnClick">我的社团</el-button>
                     </div>
                 </div>
             </template>
             <DataTable :column="column" :tableData="tableData" @onDel="deleteModal" @onEdit="editModal"></DataTable>
-            <el-dialog v-model="addDialogVisible" title="新增" width="500" :before-close="handleClose">
-                <el-form v-model="form">
-                    <el-form-item label="社团名称">
-                        <el-input v-model="form.clubname"></el-input>
-                    </el-form-item>
-                    <el-form-item label="社团邮箱">
-                        <el-input v-model="form.email"></el-input>
-                    </el-form-item>
-                </el-form>
+            <el-dialog v-model="addDialogVisible" title="我的社团" width="800" :before-close="handleClose">
+                <DataTable :column="column" :tableData="tableData" @onDel="deleteModal" @onEdit="editModal"></DataTable>
                 <template #footer>
                     <div class="dialog-footer">
                         <el-button @click="editDialogVisible = false">取消</el-button>
@@ -49,7 +42,7 @@
             </template>
         </el-dialog>
         <el-dialog v-model="deleteDialogVisible" title="删除" width="500" :before-close="handleClose">
-            确认删除社团?
+            确认删除用户?
             <template #footer>
                 <div class="dialog-footer">
                     <el-button @click="deleteDialogVisible = false">取消</el-button>
@@ -103,6 +96,8 @@ const column = ref([
     {
         label: '操作',
         operation: true,
+        confirmBtn: '加入',
+        delBtn: '查看'
     },
 ])
 const tableData = ref([])
@@ -116,7 +111,7 @@ const add = async() => {
         await addClub({club: obj})
         ElMessageBox({
             type: 'success',
-            message: "添加成功"
+            message: "编辑成功"
         })
         addDialogVisible.value=false;
         let res = await getClubList()
@@ -125,7 +120,7 @@ const add = async() => {
         addDialogVisible.value=false;
         ElMessageBox({
             type: 'error',
-            message: "添加失败"
+            message: "编辑失败"
         })
     }
 }

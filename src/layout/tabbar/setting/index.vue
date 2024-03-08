@@ -12,7 +12,7 @@
         </span>
         <template #dropdown>
             <el-dropdown-menu>
-                <el-dropdown-item>用户信息</el-dropdown-item>
+                <el-dropdown-item @click="goUser">用户信息</el-dropdown-item>
                 <el-dropdown-item @click="logout">退出登录</el-dropdown-item>
             </el-dropdown-menu>
         </template>
@@ -37,9 +37,12 @@ const FullScreen = () => {
         document.documentElement.requestFullscreen();
     }
 }
-const logout = ()=>{
-    UserStore.userLogout()
+const logout = async()=>{
+    await UserStore.userLogout()
     $router.push('/login')
+}
+const goUser = ()=>{
+    $router.push('/person/person')
 }
 </script>
 <script lang="ts">

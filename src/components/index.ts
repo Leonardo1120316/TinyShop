@@ -1,7 +1,9 @@
 import SvgIcon from '@/components/SvgIcon/index.vue'
+import UserForm from '@/components/UserForm/index.vue'
+import DataTable from '@/components/DataTable/index.vue'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
-const allGlobalComponent = { SvgIcon }
+const allGlobalComponent = { SvgIcon, UserForm, DataTable }
 
 //对外暴露对象
 export default{

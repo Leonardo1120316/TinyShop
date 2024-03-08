@@ -35,39 +35,29 @@ let loginForms = ref()
 const $router = useRouter()
 const useStore = useUserStore()
 const loginForm = reactive({
-   userAccount: 'admin',
-   userPassword: '123456',
+   userAccount: '',
+   userPassword: '',
 })
 //自定义校验规则函数
 const validatorUserName = (rule:any,value:any,callback:any) => {
-   if(value.length<5){
-      callback(new Error("密码长度小于5位"))
-   }else if(value.length>10){
-      callback(new Error("密码长度大于10位"))
+   if(value.length<4){
+      callback(new Error("账号长度小于4位"))
    }else{
       callback()
    }
 }
 const validatorPassword = (rule:any,value:any,callback:any) => {
-   if(value.length<5){
-      callback(new Error("密码长度小于5位"))
-   }else if(value.length>10){
-      callback(new Error("密码长度大于10位"))
+   if(value.length<6){
+      callback(new Error("密码长度小于6位"))
    }else{
       callback()
    }
 }
 const rules = {
    userAccount: [
-      // {required: true,message: '用户名不能为空',triggle:"blur"},
-      // {min: 6,message: '用户名长度小于6位',triggle:"change"},
-      // {max: 16,message: '用户名长度大于16位',triggle:"change"}
       {trigger:'change',validator:validatorUserName}
    ],
    userName: [
-   // {required: true,message: '密码不能为空',triggle:"blur"},
-   //    {min: 6,message: '密码长度小于6位',triggle:"change"},
-   //    {max: 16,message: '密码长度大于16位',triggle:"change"}
    {trigger:'change',validator:validatorPassword}
    ]
 }
@@ -79,7 +69,7 @@ const login = async () => {
    loading.value=true
    try {
       await useStore.userLogin(loginForm);
-      await useStore.userInfo()
+      await useStore.userInfo();
       $router.push('/')
       ElNotification({
          type: 'success',
