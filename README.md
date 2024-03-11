@@ -1,18 +1,38 @@
-# Vue 3 + TypeScript + Vite
+# 基于Springboot的后台管理系统
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+前端使用vite+Vue3+Ts
+后端使用SpringBoot+MybatisPlus
+组件库 elementPlus
 
-## Recommended IDE Setup
+## 项目配置
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+1.前端配置
+axios请求地址 BASE_URL
+vite反向代理
 
-## Type Support For `.vue` Imports in TS
+2.后端配置
+application.yml文件
+Mysql数据库配置
+Session连接配置
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+## 项目集成
+###前端
+1.aiox封装request
+2.api封装接口
+3.项目组件库
+ 1.meun菜单
+ 2.dataTable数据表单
+ 3.breadcrumb面包屑组件
+4.路由配置
+5.集中状态管理（Pinia）
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+## 项目运行
+前端
+```
+yarn install
+yarn run dev
+```
+后端
+导入项目依赖
+建立数据库表
